@@ -14,10 +14,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
 import { LatestNewsComponent } from './component/latest-news/latest-news.component';
 import { PrecautionsComponent } from './component/precautions/precautions.component';
-import { LoginComponent } from './component/login/login.component';
+import { CoreServiceModule } from './services/service';
+import { AdminModule } from './modules/admin/admin.module';
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, LatestNewsComponent, PrecautionsComponent, LoginComponent],
+  declarations: [AppComponent, DashboardComponent, LatestNewsComponent, PrecautionsComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -28,8 +29,9 @@ import { LoginComponent } from './component/login/login.component';
     MatIconModule,
     MatButtonModule,
     LayoutModule,
+    AdminModule,
   ],
-  providers: [],
+  providers: [CoreServiceModule],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

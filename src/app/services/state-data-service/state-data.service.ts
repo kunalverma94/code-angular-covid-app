@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class GetStatisticsService {
+export class StateDataService {
 
   constructor() { }
 }
