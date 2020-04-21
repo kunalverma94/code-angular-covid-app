@@ -52,8 +52,8 @@ export class GraphComponent implements OnInit {
           title: this.Context.title,
           subtitle: this.Context.subtitle,
         },
-        width: window.innerWidth - 80,
-        height: 500,
+        // width: window.innerWidth - 80,
+        height: window.innerHeight / 2,
         backgroundColor: 'transparent',
         is3D: true,
         animation: {

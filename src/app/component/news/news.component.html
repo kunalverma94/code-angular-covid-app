@@ -1,1 +1,40 @@
-<p>news works!</p>
+<div class="page-title">
+  Latest News
+</div>
+<div class="acc">
+  <mat-accordion *ngFor="let i of news">
+    <mat-expansion-panel expanded="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <div class="ntitle">{{ i.Title }}</div>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="nh">
+        <div class="head">HeadLine</div>
+        <div class="content">
+          {{ i.Title }}
+        </div>
+      </div>
+      <div class="nh" *ngIf="i.Images && i.Images.length > 0">
+        <div class="head">Images</div>
+        <div class="nnimg">
+          <div class="content" *ngFor="let j of i.Images">
+            <img src="{{ j }}" alt="j" class="nimg" (error)="see($event)" />
+          </div>
+        </div>
+      </div>
+      <div class="nh">
+        <div class="head">News</div>
+        <div class="content">
+          {{ i.News }}
+        </div>
+      </div>
+      <div class="nh">
+        <div class="head">Summary</div>
+        <div class="content">
+          {{ i.Summary }}
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

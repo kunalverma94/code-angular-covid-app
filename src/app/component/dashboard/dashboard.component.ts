@@ -16,12 +16,11 @@ export class DashboardComponent implements OnInit {
   public state: StatContext = {};
   public casetime: StatContext = {};
   public tested: StatContext = {};
+  loading = true;
   constructor(private stats: StatisticsService) {}
   ngOnInit() {
     this.stats.getStatistics().subscribe((k) => {
       this.state = {
-        title: 'State Live Update',
-        subtitle: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, voluptate.',
         data: k.StateWise,
         chartCols: [
           { type: 'string', property: 'statecode' },
@@ -33,8 +32,6 @@ export class DashboardComponent implements OnInit {
       };
 
       this.casetime = {
-        title: 'Case Time Update',
-        subtitle: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, voluptate.',
         data: k.CasesTimeSeries,
         chartCols: [
           { type: 'number', property: 'dailyconfirmed' },
@@ -49,8 +46,6 @@ export class DashboardComponent implements OnInit {
       };
 
       this.tested = {
-        title: 'Testing Time Update',
-        subtitle: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, voluptate.',
         data: k.tested,
         chartCols: [
           { type: 'number', property: 'totalindividualstested' },
@@ -60,6 +55,7 @@ export class DashboardComponent implements OnInit {
         ],
         exclude: ['testsconductedbyprivatelabs', 'positivecasesfromsamplesreported', 'samplereportedtoday'],
       };
+      this.loading = false;
     });
   }
 }

@@ -4,3 +4,7 @@
 .example-stretched-tabs {
   max-width: 100%;
 }
+.stt {
+  border-left: solid 5px var(--p);
+  padding-left: 2px;
+}

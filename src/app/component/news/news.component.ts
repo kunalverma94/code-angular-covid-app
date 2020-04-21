@@ -1,15 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { NewsService } from 'src/app/modules/admin/news-service/news.service';
+import { News } from 'src/app/modules/admin/news-service/news';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
-  styleUrls: ['./news.component.css']
+  styleUrls: ['./news.component.css'],
 })
 export class NewsComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+  panelOpenState = true;
+  news: News[] = [];
+  constructor(private nvs: NewsService) {
+    this.news = nvs.getNews();
+    console.log(this.news);
   }
-
+  see(e) {
+    console.log(e);
+    e.target.src = '/assets/404.png';
+  }
+  ngOnInit(): void {}
 }

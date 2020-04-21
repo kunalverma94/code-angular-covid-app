@@ -1,1 +1,53 @@
-<p>add-news works!</p>
+<div class="page-title">
+  Add News
+</div>
+<form
+  class="example-form"
+  [formGroup]="profileForm"
+  #formDirective="ngForm"
+  (ngSubmit)="onSubmit(profileForm, formDirective)"
+>
+  <mat-form-field class="example-full-width">
+    <mat-label>Title</mat-label>
+    <input matInput placeholder="Ex. This is latest news blabal" formControlName="Title" required />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Description</mat-label>
+    <textarea matInput placeholder="Ex. It makes me feel..." formControlName="Description" required></textarea>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Summary</mat-label>
+    <textarea matInput placeholder="Ex. It makes me feel..." formControlName="Summary" required></textarea>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>News</mat-label>
+    <textarea matInput placeholder="Ex. It makes me feel..." rows="7" formControlName="News" required></textarea>
+  </mat-form-field>
+  <div formArrayName="Images">
+    <mat-label>Images</mat-label>
+    <mat-icon matBadge="{{ ImagesFB.controls.length }}" matBadgeColor="warn">photo</mat-icon>
+    <span class="cdk-visually-hidden"> </span>
+    <div *ngFor="let image of ImagesFB.controls; let i = index">
+      <mat-form-field class="example-full-width">
+        <mat-label>Image Url -{{ i }}</mat-label>
+        <input matInput value="" [formControlName]="i" />
+      </mat-form-field>
+    </div>
+    <button mat-raised-button type="button" (click)="addAlias()">
+      Add More Images
+      <mat-icon matBadgeColor="warn">photo</mat-icon>
+    </button>
+  </div>
+  <br />
+  <button
+    style="width: 100%;"
+    mat-raised-button
+    mat-button
+    color="primary"
+    type="submit"
+    [disabled]="!profileForm.valid"
+  >
+    Add New To Board
+  </button>
+</form>

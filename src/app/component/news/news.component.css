@@ -1,0 +1,24 @@
+.nimg {
+  width: 25%;
+  border-radius: 5%;
+  box-shadow: 0 0 12px black;
+  margin: 5px;
+}
+.head {
+  padding: 7px;
+  background: linear-gradient(45deg, #9c27b04a 14%, transparent 65%);
+  margin: 5px 0;
+  border-radius: 4px;
+}
+.nnimg {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.nnimg > div {
+  display: contents;
+}
+
+mat-expansion-panel {
+  margin-bottom: 9px;
+}

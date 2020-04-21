@@ -1,0 +1,17 @@
+<div class="page-title">
+  State Data
+</div>
+<div *ngIf="data && data.statecode; else nones">
+  <div class="container">
+    <mat-chip color="primary"><a routerLink="/home">back</a></mat-chip>
+    <mat-chip-list class="cen" aria-label="Fish selection">
+      <mat-chip color="primary" selected>{{ state }}</mat-chip>
+      <mat-chip color="accent" selected>{{ data.statecode }}</mat-chip>
+    </mat-chip-list>
+    <app-info-stats [Context]="stateContext"></app-info-stats>
+  </div>
+</div>
+<ng-template #nones>
+  no match found
+  <mat-chip color="primary"><a routerLink="/home">Go Back</a></mat-chip>
+</ng-template>

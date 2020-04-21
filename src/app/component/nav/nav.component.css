@@ -8,6 +8,7 @@ nav.top {
   top: 0;
   z-index: 101;
   width: 100%;
+  justify-content: space-between;
 }
 nav > div {
   margin-right: 10px;
@@ -42,7 +43,11 @@ nav.side {
   font-size: 30px;
   animation: anima 5s linear infinite;
 }
-
+.p1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .side-nav-items > a.active {
   position: relative;
   border-left: none;

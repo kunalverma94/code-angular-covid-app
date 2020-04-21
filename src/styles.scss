@@ -10,6 +10,10 @@
 @import '@angular/material/prebuilt-themes/purple-green.css';
 :root {
   --p: #9c27b0;
+  --c: #fff;
+  --l: #9c27b04a;
+  --al: rgba(255, 255, 255, 0.7);
+  --b: #303030;
 }
 html,
 body {
@@ -18,13 +22,13 @@ body {
 body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
-  background: #303030;
-  color: white;
+  background: var(--b);
+  color: var(--c);
   user-select: none;
 }
 a,
 .link {
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--al);
   transition: color 100ms;
   cursor: pointer;
   text-decoration: none !important;
@@ -40,7 +44,27 @@ a:hover,
   font-size: initial;
 }
 @media (max-width: 767px) {
-  * {
-    font-size: 11px !important;
-  }
+  // * {
+  //   font-size: 11px !important;
+  // }
+}
+
+.page-title {
+  font-size: larger;
+  border-left: solid 5px var(--p);
+  padding: 13px 8px;
+  margin: 13px 0;
+}
+.foo {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: #000000b8;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-position: center;
+  z-index: 999;
 }

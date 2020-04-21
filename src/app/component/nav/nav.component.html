@@ -1,15 +1,27 @@
 <nav class="top">
-  <div class="ico" (click)="toggle()">
-    <app-logo [size]="40"></app-logo>
+  <div class="p1">
+    <div class="ico" (click)="toggle()">
+      <app-logo [size]="40"></app-logo>
+    </div>
+    <div class="title">Corona</div>
   </div>
-  <div class="title">Corona</div>
+  <div class="user p1">
+    <mat-icon>account_box</mat-icon>
+    <div class="user" *ngIf="auth.CurrentUser">{{ auth.CurrentUser.user | uppercase }}</div>
+  </div>
 </nav>
 <nav class="side" [ngClass]="{ hide: hideNav }" (click)="toggle()">
   <div class="side-nav-items">
     <a routerLink="home" routerLinkActive="active">Home</a>
-    <a routerLink="news" routerLinkActive="active">News</a>
+    <a routerLink="news" routerLinkActive="active"> News (5)</a>
     <a routerLink="pre" routerLinkActive="active">Precautions</a>
     <a routerLink="addnews" routerLinkActive="active">Add News</a>
-    <a routerLink="login" routerLinkActive="active">Admin Access</a>
+    <a *ngIf="!auth.CurrentUser" routerLink="login" routerLinkActive="active">Login</a>
+    <a
+      *ngIf="auth.CurrentUser"
+      (click)="openSnackBar('logged Out Successfull') && auth.logout()"
+      routerLinkActive="active"
+      >Logout ({{ auth.CurrentUser.user }})</a
+    >
   </div>
 </nav>

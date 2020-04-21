@@ -4,11 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatCardModule } from '@angular/material/card';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
+
 import { LayoutModule } from '@angular/cdk/layout';
 import { PrecautionsComponent } from './component/precautions/precautions.component';
 import { CoreServiceModule } from './services/service';
@@ -19,27 +15,44 @@ import { AppRoutingModule } from './app.routing';
 import { NavComponent } from './component/nav/nav.component';
 import { AppComponent } from './home/app.component';
 import { LogoComponent } from './component/shared/logo/logo.component';
-import { MaterialUIModule } from './modules/material/material-module';
 import { InfoStatsComponent } from './component/shared/info-stats/info-stats.component';
 import { GraphComponent } from './component/shared/graph/graph.component';
+import { StateComponent } from './component/shared/state/state.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MaterialUIModule } from './modules/material/material-module';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { CommonModule } from '@angular/common';
+import { ErrorComponent } from './component/shared/error/error.component';
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, PrecautionsComponent, NewsComponent, NavComponent, LogoComponent, InfoStatsComponent, GraphComponent],
+  declarations: [
+    AppComponent,
+    DashboardComponent,
+    PrecautionsComponent,
+    NewsComponent,
+    NavComponent,
+    LogoComponent,
+    InfoStatsComponent,
+    GraphComponent,
+    StateComponent,
+    ErrorComponent,
+  ],
   imports: [
     AppRoutingModule,
     HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
-    MatIconModule,
-    MatButtonModule,
     LayoutModule,
     AdminModule,
+    ReactiveFormsModule,
+    FormsModule,
     MaterialUIModule,
+    CommonModule,
   ],
+  exports: [MaterialUIModule],
   providers: [HttpClientModule, CoreServiceModule],
   bootstrap: [AppComponent],
 })
