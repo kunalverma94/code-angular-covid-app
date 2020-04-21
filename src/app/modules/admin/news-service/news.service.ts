@@ -37,17 +37,13 @@ export class NewsService {
     },
   ];
   public newssvc = localStorage.getItem('crnews');
-  constructor() {
-    let lc = localStorage.getItem('crnews');
-    if (!lc) {
-      localStorage.setItem('crnews', JSON.stringify(this.news));
-    }
-    this.news = JSON.parse(lc);
-  }
+  constructor() {}
   public getNews(): News[] {
+    this.seed();
     return this.news;
   }
   public PostNews(news: News): boolean {
+    this.seed();
     try {
       this.news.push(news);
       localStorage.setItem('crnews', JSON.stringify(this.news));
@@ -55,5 +51,12 @@ export class NewsService {
       return false;
     }
     return true;
+  }
+  private seed() {
+    const lc = localStorage.getItem('crnews');
+    if (!lc) {
+      localStorage.setItem('crnews', JSON.stringify(this.news));
+    }
+    this.news = JSON.parse(lc);
   }
 }
