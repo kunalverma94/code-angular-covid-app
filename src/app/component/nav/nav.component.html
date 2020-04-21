@@ -10,7 +10,12 @@
     <div class="user" *ngIf="auth.CurrentUser">{{ auth.CurrentUser.user | uppercase }}</div>
   </div>
 </nav>
-<nav class="side" [ngClass]="{ hide: hideNav }" (click)="toggle()">
+<nav
+  class="side"
+  style="background: url('./assets/smok.png') var(--p) no-repeat center center/cover;"
+  [ngClass]="{ hide: hideNav }"
+  (click)="toggle()"
+>
   <div class="side-nav-items">
     <a routerLink="home" routerLinkActive="active">Home</a>
     <a routerLink="news" routerLinkActive="active"> News (5)</a>
