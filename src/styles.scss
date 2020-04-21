@@ -1,0 +1,46 @@
+// @import '~@angular/material/theming';
+
+// @include mat-core();
+// $primary: mat-palette($mat-indigo);
+// $accent: mat-palette($mat-pink, A200, A100, A400);
+// $warn: mat-palette($mat-red);
+// $theme: mat-light-theme($primary, $accent, $warn); // Or mat-dark-theme
+
+// @include angular-material-theme($theme);
+@import '@angular/material/prebuilt-themes/purple-green.css';
+:root {
+  --p: #9c27b0;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background: #303030;
+  color: white;
+  user-select: none;
+}
+a,
+.link {
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 100ms;
+  cursor: pointer;
+  text-decoration: none !important;
+}
+a:hover,
+.link :hover {
+  color: #ce93d8;
+}
+* {
+  outline: none;
+}
+* {
+  font-size: initial;
+}
+@media (max-width: 767px) {
+  * {
+    font-size: 11px !important;
+  }
+}

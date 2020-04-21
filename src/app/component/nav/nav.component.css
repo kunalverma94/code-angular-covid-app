@@ -1,0 +1,70 @@
+nav.top {
+  background: var(--p);
+  padding: 0.3rem;
+  box-shadow: 0px -10px 20px 12px black;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 101;
+  width: 100%;
+}
+nav > div {
+  margin-right: 10px;
+}
+nav.side.hide {
+  left: -115% !important;
+}
+nav.side {
+  position: fixed;
+  z-index: 1;
+  background: url('/assets/smok.png'), var(--p) no-repeat;
+  padding: 1rem;
+  height: 100%;
+  width: 100%;
+  box-shadow: inset 0px -10px 20px 12px #00000026;
+  left: 0%;
+  transition: 0.2s linear left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  background-size: cover;
+}
+
+.side-nav-items {
+  display: flex;
+  flex-direction: column;
+}
+.side-nav-items > a.active:after {
+  content: '☣';
+  position: absolute;
+  font-size: 30px;
+  animation: anima 5s linear infinite;
+}
+
+.side-nav-items > a.active {
+  position: relative;
+  border-left: none;
+  border-bottom: solid 5px;
+  border-top: solid 5px;
+}
+.side-nav-items > a {
+  padding: 0.4rem;
+  text-transform: capitalize;
+  letter-spacing: 5px;
+  margin-left: 10px;
+  border-left: solid 7px;
+}
+
+@keyframes anima {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

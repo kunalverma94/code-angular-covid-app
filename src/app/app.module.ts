@@ -1,7 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
@@ -12,14 +10,24 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
-import { LatestNewsComponent } from './component/latest-news/latest-news.component';
 import { PrecautionsComponent } from './component/precautions/precautions.component';
 import { CoreServiceModule } from './services/service';
 import { AdminModule } from './modules/admin/admin.module';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { NewsComponent } from './component/news/news.component';
+import { AppRoutingModule } from './app.routing';
+import { NavComponent } from './component/nav/nav.component';
+import { AppComponent } from './home/app.component';
+import { LogoComponent } from './component/shared/logo/logo.component';
+import { MaterialUIModule } from './modules/material/material-module';
+import { InfoStatsComponent } from './component/shared/info-stats/info-stats.component';
+import { GraphComponent } from './component/shared/graph/graph.component';
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, LatestNewsComponent, PrecautionsComponent],
+  declarations: [AppComponent, DashboardComponent, PrecautionsComponent, NewsComponent, NavComponent, LogoComponent, InfoStatsComponent, GraphComponent],
   imports: [
+    AppRoutingModule,
+    HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
@@ -30,8 +38,9 @@ import { AdminModule } from './modules/admin/admin.module';
     MatButtonModule,
     LayoutModule,
     AdminModule,
+    MaterialUIModule,
   ],
-  providers: [CoreServiceModule],
+  providers: [HttpClientModule, CoreServiceModule],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

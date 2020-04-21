@@ -1,0 +1,15 @@
+<nav class="top">
+  <div class="ico" (click)="toggle()">
+    <app-logo [size]="40"></app-logo>
+  </div>
+  <div class="title">Corona</div>
+</nav>
+<nav class="side" [ngClass]="{ hide: hideNav }" (click)="toggle()">
+  <div class="side-nav-items">
+    <a routerLink="home" routerLinkActive="active">Home</a>
+    <a routerLink="news" routerLinkActive="active">News</a>
+    <a routerLink="pre" routerLinkActive="active">Precautions</a>
+    <a routerLink="addnews" routerLinkActive="active">Add News</a>
+    <a routerLink="login" routerLinkActive="active">Admin Access</a>
+  </div>
+</nav>

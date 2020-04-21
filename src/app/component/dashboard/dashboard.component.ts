@@ -1,33 +1,65 @@
-import { Component } from '@angular/core';
-import { map } from 'rxjs/operators';
-import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { Component, ViewChild, OnInit } from '@angular/core';
+import { StatisticsService } from 'src/app/services/statistics-service/statistics.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { Statistics, StateWise } from 'src/app/services/statistics-service/Statistics';
+import { MatPaginator } from '@angular/material/paginator';
+import { StatContext } from '../shared/info-stats/statContext';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
 })
-export class DashboardComponent {
-  /** Based on the screen size, switch from standard to one column per row */
-  cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-    map(({ matches }) => {
-      if (matches) {
-        return [
-          { title: 'Card 1', cols: 1, rows: 1 },
-          { title: 'Card 2', cols: 1, rows: 1 },
-          { title: 'Card 3', cols: 1, rows: 1 },
-          { title: 'Card 4', cols: 1, rows: 1 }
-        ];
-      }
+export class DashboardComponent implements OnInit {
+  public data: Statistics;
+  public state: StatContext = {};
+  public casetime: StatContext = {};
+  public tested: StatContext = {};
+  constructor(private stats: StatisticsService) {}
+  ngOnInit() {
+    this.stats.getStatistics().subscribe((k) => {
+      this.state = {
+        title: 'State Live Update',
+        subtitle: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, voluptate.',
+        data: k.StateWise,
+        chartCols: [
+          { type: 'string', property: 'statecode' },
+          { type: 'number', property: 'deaths' },
+          { type: 'number', property: 'recovered' },
+          { type: 'number', property: 'active' },
+        ],
+        exclude: ['deltaconfirmed', 'deltadeaths', 'deltarecovered', 'statecode', 'statenotes', 'lastupdatedtime'],
+      };
 
-      return [
-        { title: 'Card 1', cols: 2, rows: 1 },
-        { title: 'Card 2', cols: 1, rows: 1 },
-        { title: 'Card 3', cols: 1, rows: 2 },
-        { title: 'Card 4', cols: 1, rows: 1 }
-      ];
-    })
-  );
+      this.casetime = {
+        title: 'Case Time Update',
+        subtitle: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, voluptate.',
+        data: k.CasesTimeSeries,
+        chartCols: [
+          { type: 'number', property: 'dailyconfirmed' },
+          { type: 'number', property: 'dailydeceased' },
+          { type: 'number', property: 'dailyrecovered' },
+          { type: 'string', property: 'date' },
+          { type: 'number', property: 'totalconfirmed' },
+          { type: 'number', property: 'totaldeceased' },
+          { type: 'number', property: 'totalrecovered' },
+        ],
+        exclude: [],
+      };
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+      this.tested = {
+        title: 'Testing Time Update',
+        subtitle: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, voluptate.',
+        data: k.tested,
+        chartCols: [
+          { type: 'number', property: 'totalindividualstested' },
+          { type: 'number', property: 'totalsamplestested' },
+
+          { type: 'number', property: 'totalpositivecases' },
+        ],
+        exclude: ['testsconductedbyprivatelabs', 'positivecasesfromsamplesreported', 'samplereportedtoday'],
+      };
+    });
+  }
 }

@@ -4,5 +4,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class NewsService {
-  constructor() {}
+  news: any[] = ['news 1'];
+  getNews() {}
 }
