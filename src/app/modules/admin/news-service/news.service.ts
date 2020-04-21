@@ -9,7 +9,7 @@ export class NewsService {
       Title: 'Coronavirus LIVE updates: India cases spike to 18,985; death toll at 603',
       Description: `Coronavirus world tracker: Total number of coronavirus cases in India has reached 18,985,
          and the global tally stands at 2,503,470. Stay with Business Standard for Covid-19 corona LIVE updates`,
-      Images: ['/assets/news.png', '/assets/news2.png', '/assets/news.png', '/assets/news2.png'],
+      Images: ['assets/news.png', 'assets/news2.png', 'assets/news.png', 'assets/news2.png'],
       News: `Coronavirus India update: At least 18,985 positive coronavirus (Covid-19) 
         cases have been reported across the country so far, Lav Agrawal, the Joint Secretary in the Health Ministry,
          told the press conference on Tuesday. As many as 3,252 people have been cured till
@@ -24,7 +24,7 @@ export class NewsService {
       Title: 'Coronavirus LIVE updates: India cases spike to 18,985; death toll at 603',
       Description: `Coronavirus world tracker: Total number of coronavirus cases in India has reached 18,985,
          and the global tally stands at 2,503,470. Stay with Business Standard for Covid-19 corona LIVE updates`,
-      Images: ['/assets/news.png', '/assets/news2.png', '/assets/news.png', '/assets/news2.png'],
+      Images: ['assets/news.png', 'assets/news2.png', 'assets/news.png', 'assets/news2.png'],
       News: `Coronavirus India update: At least 18,985 positive coronavirus (Covid-19) 
         cases have been reported across the country so far, Lav Agrawal, the Joint Secretary in the Health Ministry,
          told the press conference on Tuesday. As many as 3,252 people have been cured till

@@ -17,7 +17,7 @@ export class NewsComponent implements OnInit {
   }
   see(e) {
     console.log(e);
-    e.target.src = '/assets/404.png';
+    e.target.src = 'assets/404.png';
   }
   ngOnInit(): void {}
 }
