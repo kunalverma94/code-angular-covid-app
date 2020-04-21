@@ -18,7 +18,7 @@
 .nnimg > div {
   display: contents;
 }
+mat-accordion.mat-accordion>* {
+  margin-bottom: 21px!important;
 
-mat-expansion-panel {
-  margin-bottom: 9px;
 }

@@ -4,7 +4,7 @@ import { News } from './news';
   providedIn: 'root',
 })
 export class NewsService {
-  news: News[] = [
+  seednews: News[] = [
     {
       Title: 'Coronavirus LIVE updates: India cases spike to 18,985; death toll at 603',
       Description: `Coronavirus world tracker: Total number of coronavirus cases in India has reached 18,985,
@@ -36,17 +36,16 @@ export class NewsService {
        far, according to Worldometer. The United States on Tuesday decided to suspend immigration to protect jobs.`,
     },
   ];
-  public newssvc = localStorage.getItem('crnews');
-  constructor() {}
   public getNews(): News[] {
     this.seed();
-    return this.news;
+    return JSON.parse(localStorage.getItem('crnews'));
   }
-  public PostNews(news: News): boolean {
+  public PostNews(item: News): boolean {
     this.seed();
     try {
-      this.news.push(news);
-      localStorage.setItem('crnews', JSON.stringify(this.news));
+      const news = this.getNews();
+      news.push(item);
+      localStorage.setItem('crnews', JSON.stringify(news));
     } catch (error) {
       return false;
     }
@@ -55,8 +54,7 @@ export class NewsService {
   private seed() {
     const lc = localStorage.getItem('crnews');
     if (!lc) {
-      localStorage.setItem('crnews', JSON.stringify(this.news));
+      localStorage.setItem('crnews', JSON.stringify(this.seednews));
     }
-    this.news = JSON.parse(lc);
   }
 }
