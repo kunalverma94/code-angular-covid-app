@@ -22,7 +22,6 @@ export class InfoStatsComponent implements OnInit {
     if (this.Context.data) {
       this.dataSource = new MatTableDataSource(this.Context.data);
       this.displayedColumns = Object.keys(this.Context.data[0]).filter((b) => this.Context.exclude.indexOf(b) < 0);
-      console.log(this.displayedColumns);
       this.length = this.dataSource.data.length;
       this.dataSource.paginator = this.pgg;
     }

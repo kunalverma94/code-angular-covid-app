@@ -13,10 +13,8 @@ export class NewsComponent implements OnInit {
   news: News[] = [];
   constructor(private nvs: NewsService) {
     this.news = nvs.getNews();
-    console.log(this.news);
   }
   see(e) {
-    console.log(e);
     e.target.src = 'assets/404.png';
   }
   ngOnInit(): void {}

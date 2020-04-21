@@ -21,7 +21,7 @@ export class GraphComponent implements OnInit {
         }
       }, 1000);
     });
-    p.then((h) => console.log(h));
+    p.then((h) => {});
   }
 
   ch() {
