@@ -5,7 +5,7 @@
     </div>
     <div class="title">Corona</div>
   </div>
-  <div class="user p1">
+  <div class="user p1" (click)="odd()">
     <mat-icon>account_box</mat-icon>
     <div class="user" *ngIf="auth.CurrentUser">{{ auth.CurrentUser.user | uppercase }}</div>
   </div>

@@ -36,6 +36,7 @@ export class AuthenticationService {
   }
   logout() {
     localStorage.removeItem('crtuser');
+    localStorage.removeItem('first');
     this.router.navigate(['/home']);
   }
 }

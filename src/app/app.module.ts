@@ -25,6 +25,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
 import { ErrorComponent } from './component/shared/error/error.component';
+import { DialogBoxComponent } from './component/shared/dialog-box/dialog-box.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ErrorComponent } from './component/shared/error/error.component';
     GraphComponent,
     StateComponent,
     ErrorComponent,
+    DialogBoxComponent,
   ],
   imports: [
     AppRoutingModule,

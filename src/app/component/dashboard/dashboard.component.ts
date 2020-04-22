@@ -5,6 +5,8 @@ import { MatSort } from '@angular/material/sort';
 import { Statistics, StateWise } from 'src/app/services/statistics-service/Statistics';
 import { MatPaginator } from '@angular/material/paginator';
 import { StatContext } from '../shared/info-stats/statContext';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogBoxComponent } from '../shared/dialog-box/dialog-box.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,7 +19,7 @@ export class DashboardComponent implements OnInit {
   public casetime: StatContext = {};
   public tested: StatContext = {};
   loading = true;
-  constructor(private stats: StatisticsService) {}
+  constructor(private stats: StatisticsService, public dialog: MatDialog) {}
   ngOnInit() {
     this.stats.getStatistics().subscribe((k) => {
       this.state = {
@@ -56,6 +58,14 @@ export class DashboardComponent implements OnInit {
         exclude: ['testsconductedbyprivatelabs', 'positivecasesfromsamplesreported', 'samplereportedtoday'],
       };
       this.loading = false;
+      this.openDialog();
     });
+  }
+  openDialog(): void {
+    const f = localStorage.getItem('first');
+    if (f && f === '1') {
+      return;
+    }
+    this.dialog.open(DialogBoxComponent, {});
   }
 }
