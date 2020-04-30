@@ -1,9 +1,15 @@
 Home Assignment - NAGP 2020 Batch Online Workshop on Angular
+
 #Material UI USED
+
 #FULLY MOBILE COMPATIBLE
-# ENHANSED WITH GRAPHS AND CUSTOM NAVBAR
+
+#ENHANSED WITH GRAPHS AND CUSTOM NAVBAR
+
 #IMAGE BROWSING AND UPLOADING Supported
+
 #session managed
+
 •	Module:
 o	Admin Module
 o	MaterialUI module
