@@ -62,6 +62,7 @@ export class DashboardComponent implements OnInit {
       this.openDialog();
     });
   }
+
   openDialog(): void {
     const f = localStorage.getItem('first');
     if (f && f === '1') {

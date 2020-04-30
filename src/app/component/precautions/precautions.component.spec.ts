@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PrecautionsComponent } from './precautions.component';
+import { By } from '@angular/platform-browser';
 
 describe('PrecautionsComponent', () => {
   let component: PrecautionsComponent;
@@ -8,9 +9,8 @@ describe('PrecautionsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PrecautionsComponent ]
-    })
-    .compileComponents();
+      declarations: [PrecautionsComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -21,5 +21,9 @@ describe('PrecautionsComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should load preautions', () => {
+    expect(fixture.debugElement.query(By.css('.cary')).nativeElement).toBeTruthy();
   });
 });

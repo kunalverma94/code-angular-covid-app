@@ -8,6 +8,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 
 import { DashboardComponent } from './dashboard.component';
+import { MatDialog } from '@angular/material/dialog';
+import { StatisticsService } from 'src/app/services/statistics-service/statistics.service';
+import { AppModule } from 'src/app/app.module';
+import { of } from 'rxjs';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -24,7 +28,9 @@ describe('DashboardComponent', () => {
         MatGridListModule,
         MatIconModule,
         MatMenuModule,
-      ]
+        AppModule,
+      ],
+      providers: [StatisticsService],
     }).compileComponents();
   }));
 
@@ -32,9 +38,24 @@ describe('DashboardComponent', () => {
     fixture = TestBed.createComponent(DashboardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    // tslint:disable-next-line: no-string-literal
+    spyOn(component['stats'], 'getStatistics').and.returnValue(
+      of({
+        StateWise: [] as any,
+        casetime: [],
+        tested: [],
+        CasesTimeSeries: [],
+      })
+    );
   });
 
   it('should compile', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should load service data', () => {
+    component.ngOnInit();
+    expect(component.casetime).toBeDefined();
+    expect(component.state).toBeDefined();
   });
 });

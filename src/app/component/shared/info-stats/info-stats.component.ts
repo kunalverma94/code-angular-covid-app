@@ -16,8 +16,6 @@ export class InfoStatsComponent implements OnInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) pgg: MatPaginator;
   length = 0;
-  constructor() {}
-
   ngOnInit() {
     if (this.Context.data) {
       this.dataSource = new MatTableDataSource(this.Context.data);

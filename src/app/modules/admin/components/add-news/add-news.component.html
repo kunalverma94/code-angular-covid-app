@@ -28,13 +28,19 @@
     <mat-label>Images</mat-label>
     <mat-icon matBadge="{{ ImagesFB.controls.length }}" matBadgeColor="warn">photo</mat-icon>
     <span class="cdk-visually-hidden"> </span>
-    <div *ngFor="let image of ImagesFB.controls; let i = index">
-      <mat-form-field class="example-full-width">
-        <mat-label>Image Url -{{ i }}</mat-label>
-        <input matInput value="" [formControlName]="i" />
-      </mat-form-field>
+    <div class="content">
+      <img
+        *ngFor="let image of ImagesFB.controls; let i = index"
+        class="nimg"
+        [disabled]="true"
+        [formControlName]="i"
+        [src]="image.value"
+      />
     </div>
-    <button mat-raised-button type="button" (click)="addAlias()">
+    <br />
+    <br />
+    <button mat-raised-button type="button" (click)="addAlias(fl)">
+      <input multiple="true" #fl type="file" style="display: none;" />
       Add More Images
       <mat-icon matBadgeColor="warn">photo</mat-icon>
     </button>

@@ -15,7 +15,7 @@ export class AddNewsComponent implements OnInit {
     Description: new FormControl(),
     Summary: new FormControl(),
     News: new FormControl(),
-    Images: this.fb.array([this.fb.control('')]),
+    Images: this.fb.array([]),
   });
   constructor(private fb: FormBuilder, private nvs: NewsService, private _snackBar: MatSnackBar) {}
   onSubmit(data, formDirective: FormGroupDirective) {
@@ -29,7 +29,7 @@ export class AddNewsComponent implements OnInit {
         Description: new FormControl(),
         Summary: new FormControl(),
         News: new FormControl(),
-        Images: this.fb.array([this.fb.control('')]),
+        Images: this.fb.array([]),
       });
       this.profileForm.reset();
     } else {
@@ -41,8 +41,17 @@ export class AddNewsComponent implements OnInit {
     return this.profileForm.get('Images') as FormArray;
   }
 
-  addAlias() {
-    this.ImagesFB.push(this.fb.control(''));
+  addAlias(f) {
+    f.click();
+    f.oninput = () => {
+      Array.from(f.files).forEach((file: any) => {
+        const fr = new FileReader();
+        fr.onload = (e) => {
+          this.ImagesFB.push(this.fb.control(fr.result));
+        };
+        fr.readAsDataURL(file);
+      });
+    };
   }
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {

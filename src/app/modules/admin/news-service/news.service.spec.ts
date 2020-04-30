@@ -13,4 +13,11 @@ describe('GetNewsService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should getNews', () => {
+    expect(service.getNews()).toBeDefined();
+  });
+  it('seednews present', () => {
+    expect(service.seednews).toBeDefined();
+  });
 });

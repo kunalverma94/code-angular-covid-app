@@ -1,5 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NewsComponent } from './news.component';
+import { NewsService } from 'src/app/modules/admin/news-service/news.service';
+import { MaterialUIModule } from 'src/app/modules/material/material-module';
+import { AppModule } from 'src/app/app.module';
 
 describe('NewsComponent', () => {
   let component: NewsComponent;
@@ -8,6 +11,8 @@ describe('NewsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [NewsComponent],
+      providers: [NewsService],
+      imports: [AppModule],
     }).compileComponents();
   }));
 
@@ -19,5 +24,8 @@ describe('NewsComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  it('should fetch news', () => {
+    expect(component.news).toBeDefined();
   });
 });
