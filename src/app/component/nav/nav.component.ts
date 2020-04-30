@@ -10,16 +10,9 @@ import { DialogBoxComponent } from '../shared/dialog-box/dialog-box.component';
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css'],
 })
-export class NavComponent implements OnInit {
-  hideNav = false;
-  constructor(
-    public auth: AuthenticationService,
-    private router: Router,
-    private _snackBar: MatSnackBar,
-    public dialog: MatDialog
-  ) {}
-
-  ngOnInit(): void {}
+export class NavComponent {
+  hideNav = true;
+  constructor(public auth: AuthenticationService, private _snackBar: MatSnackBar, public dialog: MatDialog) {}
   toggle = () => (this.hideNav = !this.hideNav);
 
   openSnackBar(message: string, action: string = 'x') {
@@ -28,6 +21,7 @@ export class NavComponent implements OnInit {
     });
     return -1;
   }
+
   odd() {
     this.dialog.open(DialogBoxComponent, {
       width: window.innerWidth + 'px',

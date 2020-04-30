@@ -1,17 +1,13 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { StatisticsService } from 'src/app/services/statistics-service/statistics.service';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatSort } from '@angular/material/sort';
-import { Statistics, StateWise } from 'src/app/services/statistics-service/Statistics';
-import { MatPaginator } from '@angular/material/paginator';
-import { StatContext } from '../shared/info-stats/statContext';
+import { StatContext } from '../../Models/statContext';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogBoxComponent } from '../shared/dialog-box/dialog-box.component';
+import { Statistics } from 'src/app/Models/Statistics';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
   public data: Statistics;
@@ -52,10 +48,15 @@ export class DashboardComponent implements OnInit {
         chartCols: [
           { type: 'number', property: 'totalindividualstested' },
           { type: 'number', property: 'totalsamplestested' },
-
           { type: 'number', property: 'totalpositivecases' },
         ],
-        exclude: ['testsconductedbyprivatelabs', 'positivecasesfromsamplesreported', 'samplereportedtoday'],
+        exclude: [
+          'source',
+          'individualstestedperconfirmedcase',
+          'testsconductedbyprivatelabs',
+          'positivecasesfromsamplesreported',
+          'samplereportedtoday',
+        ],
       };
       this.loading = false;
       this.openDialog();

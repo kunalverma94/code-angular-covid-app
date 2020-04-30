@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { StateDataService, StateData } from 'src/app/services/state-data-service/state-data.service';
 import { ActivatedRoute } from '@angular/router';
-import { StatContext } from '../info-stats/statContext';
+import { StateData } from 'src/app/Models/StateData';
+import { StateDataService } from 'src/app/services/state-data-service/state-data.service';
+import { StatContext } from '../../../Models/statContext';
 
 @Component({
   selector: 'app-state',

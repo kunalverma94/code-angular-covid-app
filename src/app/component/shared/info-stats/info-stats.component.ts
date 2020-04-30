@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
-import { StatContext } from './statContext';
+import { StatContext } from '../../../Models/statContext';
 
 @Component({
   selector: 'app-info-stats',

@@ -1,22 +1,19 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { StatContext } from '../info-stats/statContext';
+import { StatContext } from '../../../Models/statContext';
 
 @Component({
   selector: 'app-graph',
-  templateUrl: './graph.component.html',
-  styleUrls: ['./graph.component.css'],
+  template: '<div [id]="cid"></div>',
 })
 export class GraphComponent implements OnInit {
   @Input() Context: StatContext;
   cid = 'linechart_material' + Math.floor(Math.random() * 1000) + 1;
-  constructor() {}
-
   ngOnInit(): void {
     const p = new Promise((r) => {
       const i = setInterval(() => {
         if (document.getElementById(this.cid)) {
           r(true);
-          this.ch();
+          this.initilizeGraph();
           clearInterval(i);
         }
       }, 1000);
@@ -24,7 +21,7 @@ export class GraphComponent implements OnInit {
     p.then((h) => {});
   }
 
-  ch() {
+  initilizeGraph() {
     const google = (window as any).google;
     google.charts.load('current', { packages: ['line'] });
 

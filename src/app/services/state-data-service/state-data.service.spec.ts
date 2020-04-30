@@ -1,13 +1,12 @@
 import { TestBed } from '@angular/core/testing';
-
-import { GetStateDataService } from './get-state-data.service';
+import { StateDataService } from './state-data.service';
 
 describe('GetStateDataService', () => {
-  let service: GetStateDataService;
+  let service: StateDataService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(GetStateDataService);
+    service = TestBed.inject(StateDataService);
   });
 
   it('should be created', () => {

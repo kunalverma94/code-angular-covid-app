@@ -37,16 +37,13 @@ a:hover,
 .link :hover {
   color: #ce93d8;
 }
-* {
-  outline: none;
-}
-* {
+.ftxt {
   font-size: initial;
 }
 @media (max-width: 767px) {
-  // * {
-  //   font-size: 11px !important;
-  // }
+  .ftxt {
+     font-size: 11px !important;
+   }
 }
 
 .page-title {

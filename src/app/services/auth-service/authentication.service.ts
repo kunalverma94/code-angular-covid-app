@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
+import { User } from '../../Models/User';
 
 @Injectable({
   providedIn: 'root',
@@ -39,10 +40,4 @@ export class AuthenticationService {
     localStorage.removeItem('first');
     this.router.navigate(['/home']);
   }
-}
-
-export interface User {
-  user: string;
-  password: string;
-  preferences?: string;
 }
