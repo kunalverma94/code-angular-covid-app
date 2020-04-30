@@ -11,12 +11,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  constructor(private auth: AuthenticationService, private router: Router, private _snackBar: MatSnackBar) {}
+
   login = new FormGroup({
     user: new FormControl('admin'),
     password: new FormControl('admin'),
   });
   loading = false;
-  constructor(private auth: AuthenticationService, private router: Router, private _snackBar: MatSnackBar) {}
+
   onSubmit() {
     this.loading = true;
     this.auth
@@ -37,11 +39,19 @@ export class LoginComponent implements OnInit {
         this.loading = false;
       });
   }
+
   ngOnInit(): void {
-    if (this.auth.CurrentUser && this.auth.CurrentUser.user) {
-      this.router.navigate(['/home']);
-    }
+    try {
+      if (this.auth.CurrentUser && this.auth.CurrentUser.user) {
+        this.router.navigate(['/home']);
+      }
+      const rt = this.router.parseUrl(this.router.url).queryParams.returnUrl;
+      if (rt && rt.search('addnews') > -1) {
+        this.openSnackBar('Only admin can add News.Please Login');
+      }
+    } catch (error) {}
   }
+
   openSnackBar(message: string, action: string = 'x') {
     this._snackBar.open(message, action, {
       duration: 2000,
