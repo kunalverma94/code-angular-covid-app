@@ -70,3 +70,12 @@ nav.side {
     transform: rotate(360deg);
   }
 }
+
+@keyframes www {
+  0% {
+    background-position: 0%;
+  }
+  50% {
+    background-position: 100%;
+  }
+}
